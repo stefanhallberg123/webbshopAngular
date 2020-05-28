@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "stefaneshop"
+    }
+  },
+  "defaultProject": "stefaneshop",
+  "cli": {
+    "analytics": "fbe6cccb-93fd-4f0f-b0a2-aa94c6728c39"
+  }
 }
