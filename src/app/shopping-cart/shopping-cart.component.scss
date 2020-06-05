@@ -1,0 +1,29 @@
+$white: white;
+.emptyBasket {
+  color: white;
+  text-align: center;
+  font-size: xx-large;
+  margin-top: 5%;
+}
+.movies {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 30%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  .images {
+    width: 50%;
+    height: 50%;
+  }
+  .movieName {
+    display: block;
+    color: $white;
+  }
+  .moviePrice {
+    color: $white;
+  }
+  .movieDesc {
+    color: $white;
+  }
+}

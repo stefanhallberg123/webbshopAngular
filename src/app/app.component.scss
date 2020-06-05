@@ -1,0 +1,30 @@
+// colours
+$white: white;
+
+h1 {
+  text-align: center;
+  color: $white;
+}
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  color: $white;
+  margin: 0%;
+  li {
+    color: $white;
+    font-size: xx-large;
+  }
+  li:hover {
+    text-decoration: underline;
+    text-decoration-color: green;
+  }
+  a {
+    text-decoration: none;
+    color: $white;
+  }
+  a:active {
+    color: $white;
+  }
+}

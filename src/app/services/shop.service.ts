@@ -1,50 +1,61 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Subject, Observable } from 'rxjs';
 import Product from '../model/product';
-import { Subject, observable, Observable, of } from 'rxjs';
+import IProductData from './iproduct-data';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ShopService {
-  getProducts: any;
-  constructor() {}
+export class ShopService implements IProductData {
+  theProducts = new Subject<Product[]>();
+  movieById = new Subject<Product>();
 
-  // private ProductSource = new Subject<Product>();
+  products: Product[] = [];
 
-  // gotProduct = this.ProductSource.asObservable();
+  constructor(private http: HttpClient) {}
 
-  // printingProduct(getProduct: Product) {
-  //   this.ProductSource.next(getProduct);
-  // }
-  products: Product[];
-  getData(): Observable<Product[]> {
-    return of(this.products);
+  getProducts() {
+    this.http
+      .get(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/products'
+      )
+      .subscribe((data: any) => {
+        // console.log(data);
+
+        const products: Product[] = data.map((product) => {
+          const myProduct = new Product();
+          myProduct.category = product.category;
+          myProduct.description = product.description;
+          myProduct.id = product.id;
+          myProduct.imageUrl = product.category;
+          myProduct.name = product.name;
+          myProduct.price = product.price;
+          myProduct.year = product.year;
+
+          return myProduct;
+        });
+        return this.theProducts.next(data);
+      });
   }
+  getThisMovie(id) {
+    this.http
+      .get(
+        `https://medieinstitutet-wie-products.azurewebsites.net/api/products/${id}`
+      )
+      .subscribe((data: any) => {
+        // const movies: Product = data.map((movie) => {
+        //   const movieId = new Product();
+        //   movieId.category = movie.category;
+        //   movieId.description = movie.description;
+        //   movieId.id = movie.id;
+        //   movieId.imageUrl = movie.imageUrl;
+        //   movieId.name = movie.name;
+        //   movieId.price = movie.price;
+        //   movieId.year = movie.year;
 
-  async getdata(): Promise<Product[]> {
-    let data = await fetch(
-      'https://medieinstitutet-wie-products.azurewebsites.net/api/products'
-    );
-    let result: any = await data.json();
-
-    let products: Product[] = result.Search.map((result: any) => {
-      let product: Product = new Product();
-      product.name = result.name;
-      product.price = result.price;
-      product.description = result.description;
-      product.category = result.category;
-      product.imageUrl = result.imageUrl;
-      product.id = result.id;
-      product.year = result.year;
-      return product;
-    });
-    return products;
-    // const myObservable = of(products);
-    // const myObserver = {
-    //   next: (x) => console.log(x),
-    //   error: (err) => console.log('error' + err),
-    //   complete: () => console.log('yey'),
-    // };
-    // myObservable.subscribe(myObserver);
+        //   return movieId;
+        this.movieById.next(data);
+      });
   }
 }
