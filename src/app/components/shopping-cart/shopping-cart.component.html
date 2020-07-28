@@ -1,0 +1,15 @@
+<h1 class="header">Varukorg</h1>
+<div class="movies" *ngFor="let cartProducts of productInCart">
+  <img class="images" src="{{ cartProducts.imageUrl }}" />
+  <div class="movieName">{{ cartProducts.name }}</div>
+  <div class="moviePrice">{{ cartProducts.price }} kr</div>
+  <button
+    class="deleteButton"
+    type="button"
+    id="deleteButton"
+    (click)="deleteFromCart(cartProducts)"
+  >
+    Ta bort från kundkorg
+  </button>
+</div>
+<app-delivery-form *ngIf="productInCart.length > 0"></app-delivery-form>

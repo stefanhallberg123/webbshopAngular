@@ -1,19 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShoppingcartService } from './shoppingcart.service';
+import { MovieService } from './movie.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('ShoppingcartService', () => {
-  let service: ShoppingcartService;
+describe('ShopService', () => {
+  let service: MovieService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, HttpClientModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, HttpClientModule],
     });
-
-    service = TestBed.inject(ShoppingcartService);
+    service = TestBed.inject(MovieService);
   });
 
   it('should be created', () => {

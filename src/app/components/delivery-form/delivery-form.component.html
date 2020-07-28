@@ -1,0 +1,135 @@
+<div class="form">
+  <form [formGroup]="userform" (ngSubmit)="sendOrder()">
+    <h3>Personuppgifter</h3>
+
+    <label for="firstName">Förnamn:</label>
+    <input type="text" id="firstName" formControlName="firstName" required />
+    <div *ngIf="firstName.touched && firstName.invalid" class="invalid">
+      <div *ngIf="firstName.errors.required">
+        Detta fält är obligatoriskt
+      </div>
+      <div *ngIf="firstName.errors.minlength">
+        Du måste skriva in minst tre bokstäver
+      </div>
+    </div>
+    <label for="lastName">Efternamn:</label>
+    <input type="text" id="lastName" formControlName="lastName" required />
+    <div *ngIf="lastName.touched && lastName.invalid" class="invalid">
+      <div *ngIf="lastName.errors.required">
+        Detta fält är obligatoriskt
+      </div>
+      <div *ngIf="lastName.errors.minlength">
+        Du måste skriva in minst tre bokstäver
+      </div>
+    </div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" required />
+    <div *ngIf="email.touched && email.invalid" class="invalid" email="true">
+      <div *ngIf="email.errors.required">
+        Detta fält är obligatoriskt
+      </div>
+      <div *ngIf="email.errors.email">
+        Du måste skriva in en giltig email
+      </div>
+    </div>
+    <label for="number">Telefonnummer:</label>
+    <input type="text" id="number" formControlName="number" required />
+    <div *ngIf="number.touched && number.invalid" class="invalid">
+      <div *ngIf="number.errors.required">
+        Detta fält är obligatoriskt
+      </div>
+      <div *ngIf="number.errors?.minlength">
+        Du måste skriva in ett giltigt telefonnummer (10 siffror)
+      </div>
+      <div *ngIf="number.errors?.maxlength">
+        Du måste skriva in ett giltigt telefonnummer (10 siffror)
+      </div>
+    </div>
+
+    <div formGroupName="delivery">
+      <h3>Leverans</h3>
+      <label for="adress">Adress:</label>
+      <input type="text" id="adress" formControlName="adress" required />
+      <div *ngIf="adress.touched && adress.invalid" class="invalid">
+        <div *ngIf="adress.errors.required">
+          Detta fält är obligatoriskt
+        </div>
+        <div *ngIf="adress.errors.minlength">
+          Du måste skriva in minst tre tecken
+        </div>
+      </div>
+
+      <label for="postNumber">Postnummer:</label>
+      <input
+        type="text"
+        id="postNumber"
+        formControlName="postNumber"
+        required
+      />
+      <div *ngIf="postNumber.touched && postNumber.invalid" class="invalid">
+        <div *ngIf="postNumber.errors.required">
+          Detta fält är obligatoriskt
+        </div>
+        <div *ngIf="postNumber.errors.minlength">
+          Du måste skriva in minst fem siffror
+        </div>
+        <div *ngIf="postNumber.errors.maxlength">
+          Du måste skriva in max fem siffror
+        </div>
+      </div>
+
+      <label for="city">Stad:</label>
+      <input type="text" id="city" formControlName="city" required />
+      <div *ngIf="city.touched && city.invalid" class="invalid">
+        <div *ngIf="city.errors.required">
+          Detta fält är obligatoriskt
+        </div>
+        <div *ngIf="city.errors.minlength">
+          Du måste skriva in minst 3 bokstäver
+        </div>
+      </div>
+    </div>
+    <div formGroupName="payment">
+      <label for="klarna">Klarna</label>
+      <input
+        type="radio"
+        id="klarna"
+        name="payment"
+        formControlName="payment"
+        value="klarna"
+      />
+
+      <label for="swish">Swish</label>
+      <input
+        type="radio"
+        id="swish"
+        name="payment"
+        formControlName="payment"
+        value="swish"
+      />
+
+      <label for="smsloan">Sms-lån</label>
+      <input
+        type="radio"
+        id="smsloan"
+        name="payment"
+        formControlName="payment"
+        value="Sms-lån"
+      />
+      <div *ngIf="payment.touched && payment.invalid" class="invalid">
+        <div *ngIf="payment.errors.required">
+          Du måste ange en betallösning
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      (click)="sendOrder()"
+      [disabled]="userform.invalid"
+      routerLink="/thankYou"
+    >
+      Skicka order
+    </button>
+  </form>
+</div>

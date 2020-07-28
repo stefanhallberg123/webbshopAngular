@@ -1,9 +1,16 @@
+import { Category } from './category';
+
 export default class Product {
-  id: string;
+  id: number;
   name: string;
   description: string;
   price: number;
   imageUrl: string;
   year: number;
-  category: string;
+  amount: number;
+  productCategory: {
+    categoryId: number;
+    category: string;
+  };
+  categoryList: Category[];
 }

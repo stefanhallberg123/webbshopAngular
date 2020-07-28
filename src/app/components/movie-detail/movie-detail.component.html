@@ -1,0 +1,11 @@
+<div *ngIf="showMovie">
+  <div class="movie">
+    <img class="image" src="{{ movie.imageUrl }}" />
+    <div class="movieName">Titel: {{ movie.name }}</div>
+    <div class="movieName">Pris: {{ movie.price }}</div>
+    <div class="movieName">Beskrivning: {{ movie.description }}</div>
+    <div class="movieName">Artikelnr: {{ movie.id }}</div>
+    <div class="movieName">Realese: {{ movie.year }}</div>
+    <button (click)="addMovie(movie)">Lägg till i varukorg!</button>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<app-show-products
+  *ngFor="let product of movies"
+  [products]="product"
+  (adding)="addToCart(product)"
+>
+</app-show-products>

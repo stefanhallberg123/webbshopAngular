@@ -1,0 +1,31 @@
+<div class="categoryMovies">
+  <h1>Kategorier</h1>
+
+  <h2>Action</h2>
+  <app-categories
+    *ngFor="let movie of movies"
+    [category]="5"
+    [movie]="movie"
+  ></app-categories>
+
+  <h2>Thriller</h2>
+  <app-categories
+    *ngFor="let movie of movies"
+    [category]="6"
+    [movie]="movie"
+  ></app-categories>
+
+  <h2>Komedi</h2>
+  <app-categories
+    *ngFor="let movie of movies"
+    [category]="7"
+    [movie]="movie"
+  ></app-categories>
+
+  <h2>Sci-fi</h2>
+  <app-categories
+    *ngFor="let movie of movies"
+    [category]="8"
+    [movie]="movie"
+  ></app-categories>
+</div>

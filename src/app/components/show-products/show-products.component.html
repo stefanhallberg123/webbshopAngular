@@ -1,0 +1,14 @@
+<div *ngIf="products" class="movies">
+  <a routerLink="/movie/{{ products.id }}">
+    <img class="images" src="{{ products.imageUrl }}" />
+  </a>
+
+  <div class="movieName">
+    <div class="moviePrice">{{ products.price }} kr</div>
+    <div>
+      <button id="addMovie" (click)="addMovie()">
+        Köp: {{ products.name }}
+      </button>
+    </div>
+  </div>
+</div>

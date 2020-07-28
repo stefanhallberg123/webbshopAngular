@@ -3,4 +3,7 @@ export default class ShoppingCart {
   name: string;
   price: number;
   imageUrl: string;
+  totalsum: number;
+  amount: number;
 }
+

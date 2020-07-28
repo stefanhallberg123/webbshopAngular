@@ -1,0 +1,9 @@
+<div class="movies" *ngIf="hasCategory">
+  <a routerLink="/movie/{{ movie.id }}">
+    <img class="images" src="{{ movie.imageUrl }}" />
+  </a>
+  <div class="moviePrice">{{ movie.price }} kr</div>
+  <button (click)="addmovie(movie)" id="buyButton">
+    Köp: {{ movie.name }}
+  </button>
+</div>

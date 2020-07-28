@@ -1,0 +1,19 @@
+.movie {
+  display: inline-block;
+  text-align: center;
+  width: 40%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  width: 100%;
+  .image {
+    width: 20%;
+    height: 20%;
+  }
+  .movieName {
+    display: block;
+    color: white;
+  }
+  button {
+    margin-top: 2%;
+  }
+}

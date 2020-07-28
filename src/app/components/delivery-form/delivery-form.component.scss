@@ -1,0 +1,17 @@
+.form {
+  text-align: center;
+  form {
+    display: inline-block;
+    color: white;
+    width: 30%;
+    input {
+      width: 100%;
+    }
+    .invalid {
+      color: red;
+    }
+    button {
+      margin: 5%;
+    }
+  }
+}
